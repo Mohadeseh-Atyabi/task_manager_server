@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <h1>Task Page</h1>
+        {% if tasks %}
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Start date</th>
+                    <th>Owner</th>
+                    <th></th>
+                </tr>
+                {% for task in tasks %}
+                    <tr>
+                        <td align="center">{{ task.title }}</td>
+                        <td align="center">{{ task.description }}</td>
+                        <td align="center">{{ task.duration }}</td>
+                        <td align="center">{{ task.start_date }}</td>
+                        <td align="center">{{ task.owner }}</td>
+                        <td>
+                            <a href="{% url 'edit_task' task.id %}" id="{{ task.id }}"><button>edit</button></a>
+                            </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h1>No Data</h1>
+        {% endif %}
+        <br>
+        <a href="{% url 'create_task' %}">
+            <button>Create Task</button>
+        </a>
+    </body>
+</html>

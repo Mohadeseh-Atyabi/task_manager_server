@@ -1,0 +1,20 @@
+<html lang="eng">
+    <body>
+        <h1>Login</h1>
+        {% if messages %}
+            {% for message in messages %}
+
+                {{ message|safe }}
+
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+
+</html>
+
+
