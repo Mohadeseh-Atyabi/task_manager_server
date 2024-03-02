@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from .task import Task
 from .models import TaskModel
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-from django.contrib import messages
+
 
 
 @login_required
@@ -45,7 +44,7 @@ def edit_task(req, id):
             task.duration = form.cleaned_data.get('duration')
             task.start_date = form.cleaned_data.get('start_date')
             task.save()
-            return redirect('show_task')
+            return redirect('show_taskdjango ')
     else:
 
         form = Task(initial={'title': task.title, 'description': task.description,
